@@ -1,14 +1,8 @@
+import { formatPlaytime } from '@/lib/format';
 import getSteamGames from '@/lib/steam';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
-
-const formatPlaytime = (playtime: number): string => {
-  const hours = Math.floor(playtime / 60);
-  const minutes = playtime % 60;
-
-  return `${hours}h ${minutes}m`;
-};
 
 const Home = async (): Promise<ReactNode> => {
   const games = await getSteamGames();
@@ -23,6 +17,7 @@ const Home = async (): Promise<ReactNode> => {
       game.achievements.total > 0 &&
       game.achievements.achieved === game.achievements.total
   );
+
   return (
     <div className="container grid gap-[3vw] py-24 px-16">
       <div className="grid gap-[1vw] text-[3vw] text-neutral-900">
