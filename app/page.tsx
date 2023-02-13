@@ -39,30 +39,32 @@ const Home = async (): Promise<ReactNode> => {
         </p>
       </div>
       <div>
-        {games.map((game) => (
-          <Link
-            key={game.id}
-            id={String(game.id)}
-            className="flex items-center justify-between gap-[1vw] border-b border-neutral-200 py-[1vw]"
-            href={`https://steamcommunity.com/app/${game.id}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div className="flex items-center gap-[1vw]">
-              <Image
-                src={game.icon}
-                width={32}
-                height={32}
-                className="h-[3vw] w-[3vw] shrink-0 rounded"
-                alt=""
-              />
-              <p className="text-[1.5vw] text-neutral-900">{game.name}</p>
-            </div>
-            <p className="text-[1.5vw] text-neutral-900">
-              {formatPlaytime(game.playtime)}
-            </p>
-          </Link>
-        ))}
+        {games
+          .sort((gameA, gameB) => gameB.playtime - gameA.playtime)
+          .map((game) => (
+            <Link
+              key={game.id}
+              id={String(game.id)}
+              className="flex items-center justify-between gap-[1vw] border-b border-neutral-200 py-[1vw]"
+              href={`https://steamcommunity.com/app/${game.id}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="flex items-center gap-[1vw]">
+                <Image
+                  src={game.icon}
+                  width={32}
+                  height={32}
+                  className="h-[3vw] w-[3vw] shrink-0 rounded"
+                  alt=""
+                />
+                <p className="text-[1.5vw] text-neutral-900">{game.name}</p>
+              </div>
+              <p className="text-[1.5vw] text-neutral-900">
+                {formatPlaytime(game.playtime)}
+              </p>
+            </Link>
+          ))}
       </div>
       <hr />
       <p className="text-[1vw] text-zinc-500 dark:text-zinc-400">
