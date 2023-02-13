@@ -8,8 +8,8 @@ type SeoProps = NextSeoProps & {
   image?: string;
 };
 
-const name = '###SITE_NAME###';
-const color = '###SITE_COLOR###';
+const name = 'Games';
+const color = '#000000';
 
 const Seo: FC<SeoProps> = ({ path = '/', ...config }) => {
   const { title, description, image } = config;
