@@ -7,6 +7,7 @@ const nextConfig = {
     appDir: true,
   },
   images: {
+    domains: ['media.steampowered.com'],
     formats: ['image/avif', 'image/webp'],
   },
   headers() {
